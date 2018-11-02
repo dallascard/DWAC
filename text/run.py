@@ -24,7 +24,7 @@ def main():
     parser.add_argument('--dataset', type=str, default='imdb', metavar='N',
                         help='Dataset to run [imdb|amazon|stackoverflow|subjectivity]')
     parser.add_argument('--subset', type=str, default=None, metavar='N',
-                        help='Subset for amazon or framing dataset [cars|immigration|...]')
+                        help='Subset for amazon or framing dataset [beauty|...]')
 
     # Text Options
     parser.add_argument('--lower', action='store_true', default=False,

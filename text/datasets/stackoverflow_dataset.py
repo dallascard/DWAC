@@ -147,11 +147,8 @@ class StackOverflowDataset(TextDataset):
         train_lines = []
         test_lines = []
         ood_lines = []
-        unsup_lines = []
         vocab = set()
 
-
-        ratings = set()
         train_labels = Counter()
         test_labels = Counter()
 

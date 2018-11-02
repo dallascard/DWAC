@@ -28,7 +28,6 @@ class IMDB(TextDataset):
     processed_folder = 'processed'
     train_file = 'train.jsonlist'
     test_file = 'test.jsonlist'
-    #unlabeled_file = 'unlabeled.jsonlist'
     vocab_file = 'vocab.json'
     classes = ['neg', 'pos']
     class_to_idx = {_class: i for i, _class in enumerate(classes)}
@@ -164,5 +163,4 @@ class IMDB(TextDataset):
         print("Saving processed data")
         fh.write_jsonlist(train_lines, os.path.join(self.root, self.processed_folder, self.train_file))
         fh.write_jsonlist(test_lines, os.path.join(self.root, self.processed_folder, self.test_file))
-        #fh.write_jsonlist(unsup_lines, os.path.join(self.root, self.processed_folder, self.unlabeled_file), sort_keys=False)
         fh.write_json(vocab, os.path.join(self.root, self.processed_folder, self.vocab_file), sort_keys=False)

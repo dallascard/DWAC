@@ -49,11 +49,6 @@ def main():
             data = SubjectivityDataset(os.path.join(options.root_dir, 'subjectivity'), train=True, download=True, lower=False)
         else:
             data = SubjectivityDataset(os.path.join(options.root_dir, 'subjectivity'), train=False, download=True, lower=False)
-    elif dataset == 'framing':
-        if train:
-            data = FramingDataset(os.path.join(options.root_dir, 'framing'), train=True, lower=False)
-        else:
-            data = FramingDataset(os.path.join(options.root_dir, 'framing'), train=False, lower=False)
     else:
         raise ValueError("Dataset not recognized.")
 

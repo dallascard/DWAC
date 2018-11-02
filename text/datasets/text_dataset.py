@@ -56,16 +56,6 @@ def tokenize(spacy_tokenizer, text, strip_html=True, lemmatize=False):
     tokenized = spacy_tokenizer(text)
     output = ' '.join([token.text for token in tokenized])
 
-    """
-    sentences = []
-    for sent in tokenized.sents:
-        if lemmatize:
-            tokens = [t.lemma_ for t in sent]
-        else:
-            tokens = [t.orth_ for t in sent]
-        sentences.append(' '.join(tokens))
-    output = "  ".join(sentences)
-    """
     return output
 
 

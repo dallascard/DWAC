@@ -76,8 +76,6 @@ class BaselineModel(nn.Module):
 
         self.attn_layer = nn.Linear(self.hidden_dim, 1)
         self.classification_layer = nn.Linear(self.hidden_dim, self.n_classes)
-
-
         self.criterion = nn.NLLLoss(size_average=False)
 
     def get_representation(self, x):
@@ -90,7 +88,6 @@ class BaselineModel(nn.Module):
         x = torch.tanh(self.conv1_layer(x))
         x = x.transpose(1, 2)
 
-        #alpha = F.softmax(self.attn_layer(x).mul_(padding_mask), dim=1)
         a = self.attn_layer(x).exp().mul(padding_mask)
         an = a.sum(dim=1).pow(-1).view([batch_size, 1, 1])
         alpha = torch.bmm(a, an)

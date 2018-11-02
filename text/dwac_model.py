@@ -7,7 +7,6 @@ class AttentionCnnDwac(object):
     def __init__(self, args, vocab, embeddings_matrix):
         self.device = args.device
         self.n_classes = args.n_classes
-        #self.topk = args.topk
         self.eps = args.eps
 
         self.model = AttentionCnnDwacModule(args, vocab, embeddings_matrix).to(self.device)
@@ -46,7 +45,6 @@ class AttentionCnnDwac(object):
             test_zs = torch.cat(test_zs, dim=0)
             test_ys = torch.cat(test_ys, dim=0)
             test_is = torch.cat(test_is, dim=0)
-            #test_alphas = torch.cat(test_alphas, dim=0)
 
             class_dists = torch.cat(class_dists, dim=0)
             probs = class_dists.div(class_dists.sum(dim=1, keepdim=True)).log()
@@ -88,7 +86,6 @@ class AttentionCnnDwacModule(nn.Module):
         super(AttentionCnnDwacModule, self).__init__()
         self.device = args.device
 
-        #self.topk = args.topk
         self.eps = args.eps
         self.gamma = args.gamma
 
@@ -120,7 +117,6 @@ class AttentionCnnDwacModule(nn.Module):
         self.z_dim = args.z_dim
         self.n_classes = args.n_classes
 
-
         self.conv1_layer = nn.Conv1d(
             self.embedding_dim,
             self.hidden_dim,
@@ -141,7 +137,6 @@ class AttentionCnnDwacModule(nn.Module):
         x = x.transpose(1, 2)
         x = torch.tanh(self.conv1_layer(x))
         x = x.transpose(1, 2)
-        #alpha = F.softmax(self.attn_layer(x).mul_(padding_mask), dim=1)
         a = self.attn_layer(x).exp().mul(padding_mask)
         an = a.sum(dim=1).pow(-1).view([batch_size, 1, 1])
         alpha = torch.bmm(a, an)
@@ -202,39 +197,3 @@ class AttentionCnnDwacModule(nn.Module):
         }
 
         return output_dict
-
-    """
-    def classify_against_ref(self, z, ref_x, ref_y):
-        ref_z = self.get_representation(ref_x)
-
-        batch_size = ref_z.shape[0]
-        class_mask = torch.zeros(batch_size,
-                                 self.n_classes,
-                                 device=ref_z.device)
-        class_mask.scatter_(1, ref_y.view(batch_size, 1), 1).t_()
-
-        out_class_dists = []
-        #out_topk_dists = []
-        #out_topk_y = []
-        for idx, ex in enumerate(z):
-            dists = ref_z.sub(ex)
-            dists = self.distance_metric(dists)
-            class_dists = class_mask.mul(dists).sum(dim=1)
-            out_class_dists.append(class_dists.view([1, self.n_classes]))
-
-            #topk_dists, topk_idxs = dists.topk(self.topk, dim=0)
-            #out_topk_dists.append(topk_dists.view([1, self.topk]))
-            #out_topk_y.append(ref_y[topk_idxs].view([1, self.topk]))
-
-
-        out_class_dists = torch.cat(out_class_dists, dim=0)
-        #out_topk_dists = torch.cat(out_topk_dists, dim=0)
-        #out_topk_y = torch.cat(out_topk_y, dim=0)
-        output_dict = {
-            'class_dists': out_class_dists
-            #'topk_dists': out_topk_dists,
-            #'topk_y': out_topk_y,
-        }
-
-        return output_dict
-    """

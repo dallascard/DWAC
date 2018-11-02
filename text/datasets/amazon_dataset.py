@@ -54,7 +54,6 @@ class AmazonReviews(TextDataset):
     processed_folder = 'processed'
     train_file = 'train.jsonlist'
     test_file = 'test.jsonlist'
-    #unlabeled_file = 'unlabeled.jsonlist'
     vocab_file = 'vocab.json'
     classes = ['1', '2', '3', '4', '5']
     class_to_idx = {_class: i for i, _class in enumerate(classes)}
@@ -146,7 +145,6 @@ class AmazonReviews(TextDataset):
 
         train_lines = []
         test_lines = []
-        unsup_lines = []
         vocab = set()
 
         ratings = set()
@@ -193,5 +191,4 @@ class AmazonReviews(TextDataset):
         print("Saving processed data")
         fh.write_jsonlist(train_lines, os.path.join(self.root, self.processed_folder, self.subset, self.train_file))
         fh.write_jsonlist(test_lines, os.path.join(self.root, self.processed_folder, self.subset, self.test_file))
-        #fh.write_jsonlist(unsup_lines, os.path.join(self.root, self.processed_folder, self.unlabeled_file), sort_keys=False)
         fh.write_json(vocab, os.path.join(self.root, self.processed_folder, self.subset, self.vocab_file), sort_keys=False)
