@@ -103,13 +103,6 @@ def eval_topk(train_file, test_file, k, batch_size, dist_function, gamma, thread
         # sort each row by weight (smallest first)
         order = np.argsort(dists, axis=1)
 
-        # take the -k-1th column, corresponding to the kth most heavily-weighted point
-        #threshold_indices = order[:, -k]
-        # find the corresponding weights for these points
-        #thresholds = dists[np.arange(batch_size_b), threshold_indices]
-        # keep all points with weight greater than or equal to these points (per row)
-        #mask = dists >= thresholds.reshape((batch_size_b, 1))
-
         # trying alternate masking
         mask = np.zeros_like(dists)
         for j in range(len(indices)):
@@ -136,8 +129,8 @@ def eval_topk(train_file, test_file, k, batch_size, dist_function, gamma, thread
     print(acc)
     agreement = agreed / float(total_points)
     print(agreement)
-    #print(mae)
     return acc, agreement
+
 
 if __name__ == '__main__':
     main()

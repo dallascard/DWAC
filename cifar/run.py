@@ -10,6 +10,7 @@ from cifar.common import load_data
 from cifar.models.dwac import ResNetDwac
 from cifar.models.baseline import ResNetBaseline
 
+
 def main():
     parser = argparse.ArgumentParser(description='CIFAR-10 Classifier',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)

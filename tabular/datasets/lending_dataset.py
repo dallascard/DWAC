@@ -107,7 +107,6 @@ class LendingData(TabularDataset):
 
         counts = Counter()
         counts.update(df['loan_status'].values)
-        #print(counts.most_common())
 
         # drop fully paid
         df = df[df.loan_status != 'Fully Paid']
@@ -117,7 +116,6 @@ class LendingData(TabularDataset):
 
         counts = Counter()
         counts.update(df['loan_status'].values)
-        #print(counts.most_common())
 
         df.mths_since_last_delinq = df.mths_since_last_delinq.fillna(df.mths_since_last_delinq.median())
         df.dropna(inplace=True)
@@ -135,8 +133,6 @@ class LendingData(TabularDataset):
             tmp_df = pd.get_dummies(df[col], prefix=col)
             df = pd.concat((df, tmp_df), axis=1)
 
-
-        # drop attributes that we hot-encoded
         df.drop(['loan_status',
                  'term',
                  'grade',

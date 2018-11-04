@@ -40,7 +40,6 @@ def main():
 
     index = options.index
 
-
     ood_dataset = None
     ood_loader = None
     if dataset == 'lending':

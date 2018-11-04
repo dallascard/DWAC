@@ -3,7 +3,7 @@ import torch
 from text.datasets.imdb_dataset import IMDB
 from text.datasets.text_dataset import collate_fn
 
-train_dataset = IMDB('./data/imdb', train=True, download=True,)
+train_dataset = IMDB('./data/imdb', train=True, download=True)
 
 cuda = False
 kwargs = {'num_workers': 1, 'pin_memory': True}

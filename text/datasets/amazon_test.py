@@ -1,4 +1,3 @@
-import os
 from optparse import OptionParser
 
 import torch
@@ -28,7 +27,6 @@ def main():
         shuffle=True,
         collate_fn=collate_fn,
         **kwargs)
-
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@
 
 This code is to accompany the paper *Deep Weighted Averaging Classifiers*, by Dallas Card, Michael Zhang, and Noah A. Smith, to appear at FAT* 2019.
 
-It enables running the DWAC models and the comparable softmax models discussed in the paper. The four relevant directories for this are `cifar`, `mnist`, `tabular`, and `text`, all of which provide support for multiple datasets.
+The repo provides support to run the DWAC and softmax models discussed in the paper, The four relevant directories for this are `cifar`, `mnist`, `tabular`, and `text`, all of which provide support for multiple datasets.
 
 To run any of these, from the main directory, use, for example:
 
@@ -10,7 +10,7 @@ To run any of these, from the main directory, use, for example:
 
 Most of the required datasets will be downloaded and preprocessed automatically.
 
-Please use `-h` to see additional options.
+Please use `-h` to see all available options.
 
 
 ### Requirements

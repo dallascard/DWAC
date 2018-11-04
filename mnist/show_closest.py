@@ -10,8 +10,7 @@ from matplotlib.gridspec import GridSpec
 
 from torchvision import transforms
 
-from mnist.mnist_dataset import MNISTwithIndices, FashionMNISTwithIndices
-from mnist.common import to_numpy
+from mnist.datasets.mnist_dataset import MNISTwithIndices, FashionMNISTwithIndices
 from eval.find_closest import find_closest
 
 
@@ -74,8 +73,6 @@ def main():
 
     test = np.load(os.path.join(indir, 'test.npz'))
     test_labels = test['labels']
-    #test_indices = list(test['indices'])
-    #test_index = test_indices.index(index)
     true_label = test_dataset.classes[test_dataset.test_labels[test_index]]
 
     ax1 = fig.add_subplot(gs[0, 3:6])
@@ -95,8 +92,6 @@ def main():
     for i in range(4):
         ax = fig.add_subplot(gs[1, i*2:i*2+2])
         index = closest_train[i]
-        #train_index = train_indices.index(index)
-        #true_label = train_dataset.classes[train_labels[train_index]]
         image = train_dataset.train_data[index]
         true_label = train_dataset.classes[train_dataset.train_labels[index]]
         two_d = np.reshape(image, (28, 28))

@@ -90,6 +90,7 @@ class ResNetDwac(object):
                     }
         return output_dict
 
+
 class ResNetDwacModule(nn.Module):
     def __init__(self, args):
         super(ResNetDwacModule, self).__init__()

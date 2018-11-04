@@ -9,6 +9,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 from cifar.datasets.cifar_dataset import CIFAR10withIndices
 from cifar.datasets.tiny_imagenet_dataset import TinyImageNet
 
+
 def load_data(args):
 
     transform_train = transforms.Compose([
@@ -44,7 +45,6 @@ def load_data(args):
     train_idx, dev_idx = indices[split:], indices[:split]
     train_sampler = SubsetRandomSampler(train_idx)
     dev_sampler = SubsetRandomSampler(dev_idx)
-
 
     kwargs = {'num_workers': 0, 'pin_memory': True} if args.device != 'cpu' else {}
     train_loader = torch.utils.data.DataLoader(

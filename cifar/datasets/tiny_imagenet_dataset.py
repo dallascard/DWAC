@@ -18,13 +18,6 @@ class TinyImageNet(Dataset):
             ``cifar-10-batches-py`` exists or will be saved to if download is set to True.
         train (bool, optional): If True, creates dataset from training set, otherwise
             creates from test set.
-        transform (callable, optional): A function/transform that  takes in an PIL image
-            and returns a transformed version. E.g, ``transforms.RandomCrop``
-        target_transform (callable, optional): A function/transform that takes in the
-            target and transforms it.
-        download (bool, optional): If true, downloads the dataset from the internet and
-            puts it in root directory. If dataset is already downloaded, it is not
-            downloaded again.
     """
     base_folder = 'tiny-imagenet-200'
     url = 'http://cs231n.stanford.edu/tiny-imagenet-200.zip'
@@ -120,13 +113,9 @@ class TinyImageNet(Dataset):
         else:
             print("Processing finished")
 
-
     def _check_raw_exists(self):
         return os.path.exists(os.path.join(self.root, self.raw_folder, self.raw_filename)) and \
                os.path.exists(os.path.join(self.root, self.raw_folder, self.data_folder))
 
-
     def _check_processed_exists(self):
         return os.path.exists(os.path.join(self.root, self.processed_folder, self.train_file))
-               # os.path.exists(os.path.join(self.root, self.processed_folder, self.test_file))
-

@@ -20,6 +20,7 @@ class IMDB(TextDataset):
             puts it in root directory. If dataset is already downloaded, it is not
             downloaded again.
         strip_html (bool, optional): If True, remove html tags during preprocessing; default=True
+        lower (bool, optional): If true, lowercase text
     """
     url = 'http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz'
 

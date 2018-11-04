@@ -279,7 +279,5 @@ def save_output(path, output):
              confs      = output['confs'].cpu().data.numpy())
 
 
-
-
 if __name__ == '__main__':
     main()

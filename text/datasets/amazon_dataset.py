@@ -17,11 +17,12 @@ class AmazonReviews(TextDataset):
     Args:
         root (string): Root directory of dataset where ``processed/training.pt``
             and  ``processed/test.pt`` exist.
+        subset (str, optional): Subset of amazon review data to download and process
         train (bool, optional): If True, load the training data, otherwise test
         download (bool, optional): If true, downloads the dataset from the internet and
             puts it in root directory. If dataset is already downloaded, it is not
             downloaded again.
-        strip_html (bool, optional): If True, remove html tags during preprocessing; default=True
+        lower (bool, optional): If true, lowercase text
     """
     url = 'http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/'
 
@@ -58,7 +59,7 @@ class AmazonReviews(TextDataset):
     classes = ['1', '2', '3', '4', '5']
     class_to_idx = {_class: i for i, _class in enumerate(classes)}
 
-    def __init__(self, root, subset='musical', train=True, download=False, lower=True):
+    def __init__(self, root, subset='beauty', train=True, download=False, lower=True):
         super().__init__()
         self.root = os.path.expanduser(root)
         self.subset = subset

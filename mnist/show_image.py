@@ -4,7 +4,7 @@ from optparse import OptionParser
 import numpy as np
 import matplotlib.pyplot as plt
 
-from mnist.mnist_dataset import MNISTwithIndices, FashionMNISTwithIndices
+from mnist.datasets.mnist_dataset import MNISTwithIndices, FashionMNISTwithIndices
 
 
 def main():

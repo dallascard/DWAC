@@ -48,7 +48,6 @@ class Vocab(object):
         return len(self.idx2word)
 
 
-
 def tokenize(spacy_tokenizer, text, strip_html=True, lemmatize=False):
     if strip_html:
         text = re.sub(r'<[^>]+>', '', text)

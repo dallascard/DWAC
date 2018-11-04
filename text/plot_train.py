@@ -32,15 +32,6 @@ def main():
                       help='Random seed: default=%default')
 
     (options, args) = parser.parse_args()
-
-    # load all data
-    # recompute similarities from dev and test to train
-    # compute conformity scores with wieghted sum of correct class
-    # do predictions in conformal way
-    # look at error rates
-
-
-    (options, args) = parser.parse_args()
     indir = args[0]
     train_file = os.path.join(indir, 'train.npz')
 

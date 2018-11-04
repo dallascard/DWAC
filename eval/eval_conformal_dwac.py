@@ -171,7 +171,6 @@ def eval_conformal_dwac(test_file, dev_file, epsilon, xmax, ymax, normalize, plo
     multi_means = []
     x = np.linspace(0, xmax, 101)
     for epsilon in x:
-        #epsilon = 1.0 - eps
         test_preds = np.array(test_quantiles > epsilon, dtype=int)
         acc = np.sum(test_preds[np.arange(n_test), test_labels.argmax(axis=1)]) / float(n_test)
         empty = np.sum(test_preds.sum(1) == 0) / float(n_test)
@@ -184,7 +183,6 @@ def eval_conformal_dwac(test_file, dev_file, epsilon, xmax, ymax, normalize, plo
 
     if plot:
         fig, ax = plt.subplots(figsize=(6, 4))
-        #ax.plot([0, 0.2], [0, 0.2], 'k--', linewidth=1, label=None)
         ax.plot([0, xmax], [1, 1-xmax], 'k--', linewidth=1, label=None)
         ax.plot(x, acc_vals, label='Correct')
         ax.plot(x, empty_vals, label='Empty')

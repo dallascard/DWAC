@@ -3,7 +3,7 @@ from optparse import OptionParser
 import numpy as np
 
 
-# Evaluate the overall calibration of the output of a mdoel
+# Evaluate the overall calibration of the output of a model
 
 def main():
     usage = "%prog output.npz [output2.npz ...]"
@@ -90,8 +90,6 @@ def eval_calibration_by_class(labels, pred_probs, col=0, n_bins=10, adaptive=Tru
                 indices = order[i * bin_size:(i+1) * bin_size]
             else:
                 indices = order[i * bin_size:]
-            #probs = [pred_probs[index, col] for index in indices]
-            #lower = np.min(probs)
             lower = np.min(pred_probs[indices, col])
             counts.append(len(indices))
         else:

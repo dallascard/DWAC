@@ -21,6 +21,7 @@ class SubjectivityDataset(TextDataset):
         download (bool, optional): If true, downloads the dataset from the internet and
             puts it in root directory. If dataset is already downloaded, it is not
             downloaded again.
+        lower (bool, optional): If true, lowercase text
     """
     url = 'http://www.cs.cornell.edu/people/pabo/movie-review-data/rotten_imdb.tar.gz'
 

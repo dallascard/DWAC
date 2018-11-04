@@ -61,7 +61,6 @@ def main():
     plt.savefig('fashion_empty.pdf', bbox_inches='tight')
 
     fig, ax = plt.subplots(figsize=(6, 2))
-    #ax.plot([0, 0], [0, 1], 'k--', linewidth=1, label=None)
     ax.plot([0, xmax], [0, 0], 'k--', linewidth=1, label=None)
     ax.plot(x, base_multi, label='Softmax (probs)', alpha=0.8)
     ax.plot(x, dwac_multi_norm, label='DWAC (probs)', alpha=0.8)

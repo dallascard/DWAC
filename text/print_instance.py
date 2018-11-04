@@ -41,9 +41,9 @@ def main():
             data = AmazonReviews(os.path.join(options.root_dir, 'amazon'), subset=subset, train=False, download=True, lower=False)
     elif dataset == 'stackoverflow':
         if train:
-            data = StackOverflowDataset(os.path.join(options.root_dir, 'stackoverflow'), train=True, download=True, lower=False)
+            data = StackOverflowDataset(os.path.join(options.root_dir, 'stackoverflow'), partition='train', download=True, lower=False)
         else:
-            data = StackOverflowDataset(os.path.join(options.root_dir, 'stackoverflow'), train=False, download=True, lower=False)
+            data = StackOverflowDataset(os.path.join(options.root_dir, 'stackoverflow'), partition='test', download=True, lower=False)
     elif dataset == 'subjectivity':
         if train:
             data = SubjectivityDataset(os.path.join(options.root_dir, 'subjectivity'), train=True, download=True, lower=False)

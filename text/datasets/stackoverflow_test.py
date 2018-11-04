@@ -3,7 +3,7 @@ import torch
 from text.datasets.stackoverflow_dataset import StackOverflowDataset
 from text.datasets.text_dataset import collate_fn
 
-train_dataset = StackOverflowDataset('./data/stackoverflow', train=True, download=True)
+train_dataset = StackOverflowDataset('./data/stackoverflow', partition='train', download=True)
 
 cuda = False
 kwargs = {'num_workers': 1, 'pin_memory': True}

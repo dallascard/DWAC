@@ -241,8 +241,6 @@ def train(args, model, train_loader, dev_loader, test_loader, ref_loader, ood_lo
             dev_acc = dev_output['accuracy']
         else:
             dev_acc, dev_indices = test(args, model, dev_loader, ref_loader, name='Dev', return_acc=True)
-        ## uncomment to verify consistency of evaluation
-        #dev_acc, dev_indices2 = test(args, model, dev_loader, ref_loader, name='Dev2', return_acc=True)
 
         if dev_acc > best_dev_acc:
             print("New best dev accuracy: {:.5f}\n".format(dev_acc))
@@ -319,6 +317,7 @@ def train(args, model, train_loader, dev_loader, test_loader, ref_loader, ood_lo
                      pred_probs=ood_pred_probs,
                      indices=ood_indices,
                      confs=ood_confs)
+
 
 def test(args, model, test_loader, ref_loader, name='Test', return_acc=False):
     test_loss = 0
@@ -428,7 +427,6 @@ def save_output(path, output):
     for m in att_matrices:
         att_vectors.extend([m[i, :] for i in range(len(m))])
         lengths.extend([len(m[i, :]) for i in range(len(m))])
-    #print(np.histogram(lengths))
     np.savez(path,
              z          = output['zs'].cpu().data.numpy(),
              labels     = output['ys'].cpu().data.numpy(),
@@ -436,8 +434,6 @@ def save_output(path, output):
              pred_probs = output['probs'].exp().cpu().data.numpy(),
              confs      = output['confs'].cpu().data.numpy(),
              atts       = att_vectors)
-
-
 
 
 if __name__ == '__main__':
