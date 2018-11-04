@@ -63,7 +63,7 @@ def main():
                         help='number of training epochs')
 
     # DWAC Architecture Options
-    parser.add_argument('--z-dim', type=int, default=32, metavar='N',
+    parser.add_argument('--z-dim', type=int, default=5, metavar='N',
                         help='dimensions of latent representation')
     parser.add_argument('--kernel', type=str, default='gaussian', metavar='k',
                         help='type of distance function [gaussian|laplace|invquad')
