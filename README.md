@@ -29,5 +29,5 @@ Please use `-h` to see all available options.
 If you find this code or paper useful, please include a citation to:
 
 
-* Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In *Proceedings of FAT\** (2019). [[arXiv]](https://arxiv.org/abs/1811.02579) [[BibTex]](https://github.com/dallascard/DWAC/blob/master/dwac.ref)
+* Dallas Card, Michael Zhang, and Noah A. Smith. Deep Weighted Averaging Classifiers. In *Proceedings of FAT\** (2019). [[arXiv]](https://arxiv.org/abs/1811.02579) [[BibTex]](https://github.com/dallascard/DWAC/blob/master/dwac.bib)
 
