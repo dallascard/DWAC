@@ -103,7 +103,7 @@ def save_output(path, output):
              z          = output['zs'].cpu().data.numpy(),
              labels     = output['ys'].cpu().data.numpy(),
              indices    = output['is'].cpu().data.numpy(),
-             pred_probs = output['probs'].cpu().data.numpy() if 'probs' in output else None,
+             pred_probs = output['probs'].exp().cpu().data.numpy() if 'probs' in output else None,
              confs      = output['confs'].cpu().data.numpy() if 'confs' in output else None)
 
 
